@@ -12,14 +12,6 @@ export function loginByUsername(username, password, userDomain) {
     data
   })
 }
-
-export function logout() {
-  return request({
-    url: '/login/logout',
-    method: 'post'
-  })
-}
-
 export function getUserInfo(token, departCode) {
   const data = {
     token,
@@ -35,6 +27,13 @@ export function getUserInfo(token, departCode) {
 export function fetchPermission(query) {
   return request({
     url: '/menu/fetchPermission',
+    method: 'get',
+    params: query
+  })
+}
+export function fetchLogInfoList(query) { // 日志查询
+  return request({
+    url: '/logInfo/fetchLogInfoList',
     method: 'get',
     params: query
   })
