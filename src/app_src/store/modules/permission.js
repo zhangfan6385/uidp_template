@@ -5,20 +5,20 @@ import { constantRouterMap } from '@/app_src/router'
  * @param roles
  * @param route
  */
-function hasPermission(roles, route) {
+/* function hasPermission(roles, route) {
   if (route.meta && route.meta.roles) {
     return roles.some(role => route.meta.roles.indexOf(role) >= 0)
   } else {
     return true
   }
-}
+} */
 
 /**
  * 递归过滤异步路由表，返回符合用户角色权限的路由表
  * @param asyncRouterMap
  * @param roles
  */
-function filterAsyncRouter(asyncRouterMap, roles) {
+/* function filterAsyncRouter(asyncRouterMap, roles) {
   const accessedRouters = asyncRouterMap.filter(route => {
     if (hasPermission(roles, route)) {
       if (route.children && route.children.length) {
@@ -29,7 +29,7 @@ function filterAsyncRouter(asyncRouterMap, roles) {
     return false
   })
   return accessedRouters
-}
+} */
 
 const permission = {
   state: {
@@ -45,14 +45,15 @@ const permission = {
   actions: {
     GenerateRoutes({ commit }, data) {
       return new Promise((resolve, reject) => {
-        const { roles, routeMap } = data
-        let accessedRouters
+        /* const { roles, routeMap } = data
+         let accessedRouters
         if (roles.indexOf('admin') >= 0) {
           accessedRouters = routeMap
         } else {
           accessedRouters = filterAsyncRouter(routeMap, roles)
-        }
-        commit('SET_ROUTERS', accessedRouters)
+        } */
+        const { routeMap } = data
+        commit('SET_ROUTERS', routeMap)
         resolve()
       })
     }

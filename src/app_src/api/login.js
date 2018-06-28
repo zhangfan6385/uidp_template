@@ -1,9 +1,10 @@
 import request from '@/app_src/utils/request'
 
-export function loginByUsername(username, password) {
+export function loginByUsername(username, password, userDomain) {
   const data = {
     username,
-    password
+    password,
+    userDomain
   }
   return request({
     url: '/login/login',
@@ -19,14 +20,18 @@ export function logout() {
   })
 }
 
-export function getUserInfo(token) {
+export function getUserInfo(token, departCode) {
+  const data = {
+    token,
+    departCode
+  }
   return request({
     url: '/user/info',
-    method: 'get',
-    params: { token }
+    method: 'post',
+    data
+    // params: { data }
   })
 }
-
 export function fetchPermission(query) {
   return request({
     url: '/menu/fetchPermission',

@@ -20,8 +20,8 @@ import Layout from '../views/layout/Layout'
   }
 **/
 export const constantRouterMap = [
-  { path: '/login', component: _import('login/index'), hidden: true },
-  { path: '/404', component: _import('404'), hidden: true },
+  { path: '/login', component: _import('app_src/views/login/index'), hidden: true },
+  { path: '/404', component: _import('app_src/views/404'), hidden: true },
 
   {
     path: '/',
@@ -31,7 +31,7 @@ export const constantRouterMap = [
     hidden: true,
     children: [{
       path: 'dashboard',
-      component: _import('dashboard/index')
+      component: _import('app_src/views/dashboard/index')
     }]
   },
 
@@ -45,13 +45,13 @@ export const constantRouterMap = [
       {
         path: 'table',
         name: 'Table',
-        component: _import('table/index'),
+        component: _import('app_src/views/table/index'),
         meta: { title: '表格', icon: 'table' }
       }
     ]
   },
 
-  { path: '*', redirect: '/404', hidden: true }
+  { path: '*', redirect: 'app_src/views/404', hidden: true }
 ]
 
 export default new Router({
